@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#C8A97E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Geo Lucas M" />
+  <meta name="description" content="Revisão de Geografia - Estrutura da Terra e Dinâmica da Crosta - por Lucas M" />
+  <link rel="manifest" href="#" id="manifest-link" />
+  <title>Revisão de Lucas M · Geo</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --cream:    #F5EFE6;
+      --parchment:#EDE0CE;
+      --sand:     #D9C5A7;
+      --caramel:  #C8A97E;
+      --terracotta:#A0785A;
+      --umber:    #6B4C35;
+      --dark:     #2E1F14;
+      --accent:   #7A9E7E;   /* sage green contrast */
+      --accent2:  #B05E3A;   /* burnt sienna */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.55;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .font-display { font-family: 'Playfair Display', serif; }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--umber) 0%, var(--terracotta) 60%, var(--caramel) 100%);
+      padding: 2.5rem 1.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0; height: 32px;
+      background: var(--cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+      backdrop-filter: blur(4px);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: #fff;
+      line-height: 1.15;
+    }
+    header p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      padding-left: 0.25rem;
+    }
+
+    /* ── TOPIC BUTTONS ── */
+    .topic-btn {
+      position: relative;
+      width: 100%;
+      background: #fff;
+      border: 1.5px solid var(--sand);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 2px 8px rgba(100,60,20,0.06);
+      text-align: left;
+      overflow: hidden;
+    }
+    .topic-btn::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--caramel);
+      border-radius: 4px 0 0 4px;
+      transition: width 0.22s;
+    }
+    .topic-btn:hover, .topic-btn:focus {
+      border-color: var(--caramel);
+      box-shadow: 0 6px 24px rgba(100,60,20,0.13);
+      transform: translateY(-2px);
+    }
+    .topic-btn:hover::before { width: 6px; }
+    .topic-btn:active { transform: translateY(0); }
+
+    .btn-icon {
+      font-size: 1.5rem;
+      width: 2.5rem; height: 2.5rem;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--parchment);
+      border-radius: 10px;
+    }
+    .btn-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+    .btn-sub {
+      font-size: 0.72rem;
+      color: var(--terracotta);
+      margin-top: 0.15rem;
+    }
+    .btn-arrow {
+      margin-left: auto;
+      font-size: 1rem;
+      color: var(--caramel);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .topic-btn:hover .btn-arrow { transform: translateX(4px); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(46,31,20,0.55);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal-sheet {
+      background: var(--cream);
+      width: 100%; max-width: 560px;
+      border-radius: 24px 24px 0 0;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+      padding: 0 0 3rem;
+      position: relative;
+    }
+    .modal-overlay.open .modal-sheet { transform: translateY(0); }
+
+    .modal-handle {
+      width: 40px; height: 4px;
+      background: var(--sand);
+      border-radius: 2px;
+      margin: 0.75rem auto 0;
+    }
+    .modal-header {
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--parchment);
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .modal-icon {
+      font-size: 2rem;
+      width: 3.2rem; height: 3.2rem;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--parchment);
+      border-radius: 14px;
+      flex-shrink: 0;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .modal-subtitle {
+      font-size: 0.75rem;
+      color: var(--terracotta);
+      margin-top: 0.2rem;
+    }
+    .modal-close {
+      margin-left: auto; flex-shrink: 0;
+      background: var(--parchment);
+      border: none; border-radius: 999px;
+      width: 2rem; height: 2rem;
+      cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--umber);
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: var(--sand); }
+
+    .modal-body {
+      padding: 1.25rem 1.5rem 0;
+    }
+
+    /* ── CONTENT STYLES ── */
+    .content-block { margin-bottom: 1.25rem; }
+    .content-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--umber);
+      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .content-block h3::before {
+      content: '';
+      display: inline-block; width: 10px; height: 10px;
+      background: var(--caramel); border-radius: 50%;
+    }
+    .content-block p, .content-block li {
+      font-size: 0.875rem;
+      color: #3D2B1F;
+      line-height: 1.7;
+    }
+    .content-block ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    .content-block ul li::before {
+      content: '—';
+      color: var(--caramel);
+      margin-right: 0.4rem;
+    }
+    .tag-pill {
+      display: inline-block;
+      background: var(--parchment);
+      border: 1px solid var(--sand);
+      color: var(--umber);
+      font-size: 0.7rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      margin: 0.15rem;
+      font-weight: 500;
+    }
+    .tag-pill.accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .tag-pill.accent2 { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sand), transparent);
+      margin: 1rem 0;
+    }
+
+    /* ── INSTALL BANNER ── */
+    #install-banner {
+      display: none;
+      position: fixed; bottom: 1rem; left: 1rem; right: 1rem;
+      z-index: 200;
+      background: var(--umber);
+      color: #fff;
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 8px 32px rgba(46,31,20,0.35);
+      align-items: center; gap: 0.75rem;
+      max-width: 500px; margin: 0 auto;
+    }
+    #install-banner.show { display: flex; }
+    #install-banner p { font-size: 0.8rem; flex: 1; line-height: 1.4; }
+    #install-banner button {
+      white-space: nowrap;
+      background: var(--caramel);
+      border: none; border-radius: 8px;
+      color: #fff; font-size: 0.8rem;
+      padding: 0.4rem 0.85rem; cursor: pointer;
+    }
+    #install-banner .close-banner {
+      background: transparent; color: rgba(255,255,255,0.6);
+      font-size: 1.1rem; padding: 0.2rem; min-width: unset;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.72rem;
+      color: var(--terracotta);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SCROLL BAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 3px; }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .topic-btn { animation: fadeUp 0.4s both; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div style="position:relative;z-index:1;max-width:560px;margin:0 auto;">
+    <div class="header-badge">Revisão de Lucas M</div>
+    <h1 class="font-display">Estrutura da Terra &amp;<br/>Dinâmica da Crosta</h1>
+    <p>Geografia · Ensino Médio · Toque em um tópico para revisar</p>
+  </div>
+</header>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main style="max-width:560px;margin:0 auto;padding:1.75rem 1rem 2rem;position:relative;z-index:1;">
+
+  <!-- BLOCO 1 -->
+  <p class="section-label">🌍 Terra &amp; Antropoceno</p>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <button class="topic-btn" onclick="open_modal('antropoceno')" style="animation-delay:0.05s">
+      <span class="btn-icon">🏭</span>
+      <div>
+        <div class="btn-title">Antropoceno</div>
+        <div class="btn-sub">Ação humana no planeta</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('camadas')" style="animation-delay:0.1s">
+      <span class="btn-icon">🌐</span>
+      <div>
+        <div class="btn-title">Camadas da Terra</div>
+        <div class="btn-sub">Núcleo · Manto · Crosta</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+  </div>
+
+  <!-- BLOCO 2 -->
+  <p class="section-label">🗺️ Dinâmica da Crosta</p>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <button class="topic-btn" onclick="open_modal('deriva')" style="animation-delay:0.15s">
+      <span class="btn-icon">🧭</span>
+      <div>
+        <div class="btn-title">Deriva Continental</div>
+        <div class="btn-sub">Pangeia · Laurásia · Gondwana</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('tectonicas')" style="animation-delay:0.18s">
+      <span class="btn-icon">🪨</span>
+      <div>
+        <div class="btn-title">Tectônica de Placas &amp; Limites</div>
+        <div class="btn-sub">Convergente · Divergente · Transformante</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('hotspot')" style="animation-delay:0.21s">
+      <span class="btn-icon">🔥</span>
+      <div>
+        <div class="btn-title">Hotspots &amp; Rift Valley</div>
+        <div class="btn-sub">Pontos quentes do manto</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+  </div>
+
+  <!-- BLOCO 3 -->
+  <p class="section-label">🪨 Geologia</p>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <button class="topic-btn" onclick="open_modal('provincias')" style="animation-delay:0.24s">
+      <span class="btn-icon">🗿</span>
+      <div>
+        <div class="btn-title">Províncias Geológicas</div>
+        <div class="btn-sub">Crátons · Bacias Sedimentares · Dobramentos</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('rochas')" style="animation-delay:0.27s">
+      <span class="btn-icon">🔄</span>
+      <div>
+        <div class="btn-title">Ciclo das Rochas</div>
+        <div class="btn-sub">Magmáticas · Sedimentares · Metamórficas</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('processos')" style="animation-delay:0.30s">
+      <span class="btn-icon">⚙️</span>
+      <div>
+        <div class="btn-title">Processos do Ciclo</div>
+        <div class="btn-sub">Litificação · Intemperismo · Arrefecimento</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+  </div>
+
+  <!-- BLOCO 4 -->
+  <p class="section-label">⚡ Agentes Internos</p>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <button class="topic-btn" onclick="open_modal('tectonismo')" style="animation-delay:0.33s">
+      <span class="btn-icon">🌋</span>
+      <div>
+        <div class="btn-title">Tectonismo &amp; Epirogênese</div>
+        <div class="btn-sub">Movimentos verticais e horizontais</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('orogênese')" style="animation-delay:0.36s">
+      <span class="btn-icon">⛰️</span>
+      <div>
+        <div class="btn-title">Orogênese &amp; Falhas</div>
+        <div class="btn-sub">Anticlinal · Sinclinal · Falhas</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('terremotos')" style="animation-delay:0.39s">
+      <span class="btn-icon">📊</span>
+      <div>
+        <div class="btn-title">Terremotos &amp; Tsunamis</div>
+        <div class="btn-sub">Escalas Mercalli e Richter</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('vulcanismo')" style="animation-delay:0.42s">
+      <span class="btn-icon">🌋</span>
+      <div>
+        <div class="btn-title">Vulcanismo &amp; Geiseres</div>
+        <div class="btn-sub">Magma · Cinzas · Vapor</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+  </div>
+
+  <!-- BLOCO 5 -->
+  <p class="section-label">🌊 Agentes Externos</p>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <button class="topic-btn" onclick="open_modal('erosao_pluvial')" style="animation-delay:0.45s">
+      <span class="btn-icon">☔</span>
+      <div>
+        <div class="btn-title">Erosão Pluvial</div>
+        <div class="btn-sub">Sulcos · Ravinas · Voçorocas</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('erosao_fluvial')" style="animation-delay:0.48s">
+      <span class="btn-icon">🌊</span>
+      <div>
+        <div class="btn-title">Erosão Fluvial</div>
+        <div class="btn-sub">Alto Curso · Baixo Curso</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('eolica')" style="animation-delay:0.51s">
+      <span class="btn-icon">🌬️</span>
+      <div>
+        <div class="btn-title">Ação Eólica</div>
+        <div class="btn-sub">Dunas · Oásis</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+    <button class="topic-btn" onclick="open_modal('marinha')" style="animation-delay:0.54s">
+      <span class="btn-icon">🏖️</span>
+      <div>
+        <div class="btn-title">Ação Marinha &amp; Glacial</div>
+        <div class="btn-sub">Falésias · Praias · Morainas</div>
+      </div>
+      <span class="btn-arrow">›</span>
+    </button>
+
+  </div>
+
+</main>
+
+<footer>© Revisão de Lucas M · Geografia · Todos os direitos reservados</footer>
+
+<!-- ═══════════════ MODAL ═══════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="close_modal_bg(event)">
+  <div class="modal-sheet" id="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-icon" id="m-icon">🌍</div>
+      <div>
+        <div class="modal-title" id="m-title">Título</div>
+        <div class="modal-subtitle" id="m-subtitle">Subtítulo</div>
+      </div>
+      <button class="modal-close" onclick="close_modal()">✕</button>
+    </div>
+    <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ INSTALL BANNER ═══════════════ -->
+<div id="install-banner">
+  <p>📲 <strong>Instalar app</strong><br/>Adicione à tela inicial para acesso rápido offline.</p>
+  <button id="install-btn">Instalar</button>
+  <button class="close-banner" onclick="document.getElementById('install-banner').classList.remove('show')">✕</button>
+</div>
+
+<!-- ═══════════════ ICONS (PWA) ═══════════════ -->
+<canvas id="icon-canvas" style="display:none"></canvas>
+
+<script>
+// ─────────────────────────────────────────────────
+//  CONTENT DATA
+// ─────────────────────────────────────────────────
+const MODALS = {
+  antropoceno: {
+    icon: '🏭',
+    title: 'Antropoceno',
+    subtitle: 'Ação humana · Marcas no planeta',
+    html: `
+      <div class="content-block">
+        <p>É a época em que a ação humana passou a modificar intensamente o planeta, deixando marcas como:</p>
+        <div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.3rem;">
+          <span class="tag-pill accent2">Plásticos</span>
+          <span class="tag-pill accent2">Concreto</span>
+          <span class="tag-pill accent2">Metais</span>
+          <span class="tag-pill accent2">Poluição</span>
+          <span class="tag-pill accent2">Gases do efeito estufa</span>
+        </div>
+      </div>`
+  },
+
+  camadas: {
+    icon: '🌐',
+    title: 'Camadas da Terra',
+    subtitle: 'Núcleo · Manto · Crosta',
+    html: `
+      <div class="content-block">
+        <h3>Núcleo</h3>
+        <ul>
+          <li>Parte mais interna</li>
+          <li>Formado principalmente por <strong>Níquel + Ferro (NiFe)</strong></li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Manto</h3>
+        <ul>
+          <li>Camada intermediária</li>
+          <li>Formado por magma</li>
+          <li>Onde ocorrem as <strong>correntes de convecção</strong></li>
+        </ul>
+        <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--terracotta);padding-left:1rem;">magma quente sobe → esfria próximo da crosta → desce novamente</p>
+        <ul style="margin-top:0.5rem;"><li>Essas correntes movimentam as placas tectônicas</li></ul>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Crosta (Litosfera)</h3>
+        <ul>
+          <li>Camada superficial rochosa</li>
+          <li>Onde vivemos</li>
+          <li>Dividida em placas tectônicas</li>
+        </ul>
+      </div>`
+  },
+
+  deriva: {
+    icon: '🧭',
+    title: 'Teoria da Deriva Continental',
+    subtitle: 'Pangeia · Laurásia · Gondwana',
+    html: `
+      <div class="content-block">
+        <p>Há cerca de <strong>200 milhões de anos</strong> existia um único continente:</p>
+        <div style="text-align:center;margin:1rem 0;padding:1rem;background:var(--parchment);border-radius:12px;">
+          <span style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--umber);">Pangeia</span><br/>
+          <span style="font-size:1.2rem;color:var(--caramel);">↓</span><br/>
+          <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:0.4rem;">
+            <span class="tag-pill">Laurásia</span>
+            <span class="tag-pill">Gondwana</span>
+          </div>
+        </div>
+        <p>Os continentes continuaram se movimentando até a posição atual.</p>
+      </div>`
+  },
+
+  tectonicas: {
+    icon: '🪨',
+    title: 'Tectônica de Placas & Limites',
+    subtitle: 'Convergente · Divergente · Transformante',
+    html: `
+      <div class="content-block">
+        <p>A crosta terrestre é dividida em placas rígidas que se movimentam sobre o manto devido às correntes de convecção.</p>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Limite Convergente</h3>
+        <p>Choque de placas. Pode causar:</p>
+        <ul>
+          <li><strong>Subducção</strong> → placa oceânica mergulha sob a continental</li>
+          <li><strong>Obducção</strong> → encavalgamento da crosta</li>
+        </ul>
+        <p style="margin-top:0.5rem;">Consequências:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.3rem;">
+          <span class="tag-pill accent2">Vulcões</span>
+          <span class="tag-pill accent2">Montanhas</span>
+          <span class="tag-pill accent2">Terremotos</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Limite Divergente</h3>
+        <ul>
+          <li>Placas se afastam</li>
+          <li>O magma sobe e cria nova crosta</li>
+          <li>Exemplo: <strong>Dorsal Mesoatlântica</strong></li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Transformante (Conservativo)</h3>
+        <ul>
+          <li>Placas deslizam lado a lado</li>
+          <li>Consequência principal: <strong>Terremotos</strong></li>
+        </ul>
+      </div>`
+  },
+
+  hotspot: {
+    icon: '🔥',
+    title: 'Hotspots & Rift Valley',
+    subtitle: 'Pontos quentes do manto',
+    html: `
+      <div class="content-block">
+        <h3>Hotspots</h3>
+        <p>Pontos muito quentes do manto que perfuram a crosta e formam vulcões <strong>independentemente das placas tectônicas</strong>.</p>
+        <p style="margin-top:0.5rem;">Exemplo: <span class="tag-pill accent">Havaí</span></p>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Rift Valley</h3>
+        <p>Área da crosta sujeita a fraturas devido à separação tectônica.</p>
+      </div>`
+  },
+
+  provincias: {
+    icon: '🗿',
+    title: 'Províncias Geológicas',
+    subtitle: 'Crátons · Bacias · Dobramentos',
+    html: `
+      <div class="content-block">
+        <h3>Crátons / Escudos Cristalinos / Maciços Antigos</h3>
+        <ul>
+          <li>Rochas pré-cambrianas</li>
+          <li>Rochas cristalinas</li>
+          <li>Magmáticas intrusivas e metamórficas</li>
+          <li>Ricos em minerais metálicos</li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Bacias Sedimentares</h3>
+        <ul>
+          <li>Formadas por rochas sedimentares</li>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem;">
+          <span class="tag-pill">Petróleo</span>
+          <span class="tag-pill">Carvão</span>
+          <span class="tag-pill">Gás natural</span>
+          <span class="tag-pill">Turfa</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Dobramentos Modernos</h3>
+        <p>Grandes cadeias montanhosas recentes formadas por pressões tectônicas.</p>
+        <div style="display:flex;gap:0.3rem;margin-top:0.5rem;flex-wrap:wrap;">
+          <span class="tag-pill accent2">Andes</span>
+          <span class="tag-pill accent2">Himalaia</span>
+        </div>
+      </div>`
+  },
+
+  rochas: {
+    icon: '🔄',
+    title: 'Ciclo das Rochas',
+    subtitle: 'Magmáticas · Sedimentares · Metamórficas',
+    html: `
+      <div class="content-block">
+        <h3>Rochas Magmáticas (Ígneas)</h3>
+        <p>Formadas pelo resfriamento do magma.</p>
+        <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.8rem;color:var(--umber);">Extrusivas</strong>
+            <ul style="margin-top:0.3rem;">
+              <li>Formadas na superfície</li>
+              <li>Resfriamento rápido</li>
+              <li>Cristais menores</li>
+              <li>Exemplo: <strong>Basalto</strong></li>
+            </ul>
+          </div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.8rem;color:var(--umber);">Intrusivas (Plutônicas)</strong>
+            <ul style="margin-top:0.3rem;">
+              <li>Formadas no interior da crosta</li>
+              <li>Resfriamento lento</li>
+              <li>Cristais maiores</li>
+              <li>Exemplo: <strong>Granito</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Rochas Sedimentares</h3>
+        <p>Formadas pelo acúmulo de sedimentos.</p>
+        <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.8rem;color:var(--umber);">Clásticas / Detríticas</strong>
+            <ul style="margin-top:0.3rem;">
+              <li>Formadas por fragmentos de outras rochas</li>
+              <li>Exemplo: <strong>Arenito</strong></li>
+            </ul>
+          </div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.8rem;color:var(--umber);">Químicas</strong>
+            <ul style="margin-top:0.3rem;">
+              <li>Formadas por reações químicas</li>
+              <li>Exemplo: <strong>Calcário</strong></li>
+            </ul>
+          </div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.8rem;color:var(--umber);">Orgânicas</strong>
+            <ul style="margin-top:0.3rem;">
+              <li>Formadas por restos de seres vivos</li>
+              <li>Exemplos: <strong>Carvão · Petróleo</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Rochas Metamórficas</h3>
+        <p>Formadas pela transformação de outras rochas sob:</p>
+        <div style="display:flex;gap:0.3rem;margin:0.5rem 0;flex-wrap:wrap;">
+          <span class="tag-pill">Alta pressão</span>
+          <span class="tag-pill">Alta temperatura</span>
+        </div>
+        <ul>
+          <li><strong>Gnaisse</strong> (vem do granito)</li>
+          <li><strong>Mármore</strong> (vem do calcário)</li>
+        </ul>
+      </div>`
+  },
+
+  processos: {
+    icon: '⚙️',
+    title: 'Processos do Ciclo das Rochas',
+    subtitle: 'Litificação · Intemperismo · Arrefecimento',
+    html: `
+      <div class="content-block">
+        <h3>Litificação / Diagênese</h3>
+        <p>Compactação dos sedimentos formando rochas sedimentares.</p>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Meteorização / Intemperismo</h3>
+        <p>Desgaste natural das rochas. Pode ser:</p>
+        <div style="display:flex;gap:0.3rem;margin-top:0.5rem;flex-wrap:wrap;">
+          <span class="tag-pill">Físico</span>
+          <span class="tag-pill">Químico</span>
+          <span class="tag-pill">Biológico</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Consolidação / Arrefecimento</h3>
+        <p>Solidificação do magma ao esfriar.</p>
+      </div>`
+  },
+
+  tectonismo: {
+    icon: '🌋',
+    title: 'Tectonismo & Epirogênese',
+    subtitle: 'Agentes Internos (Endógenos)',
+    html: `
+      <div class="content-block">
+        <h3>Tectonismo (Diastrofismo)</h3>
+        <p>Movimentos internos que modificam o relevo.</p>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Epirogênese</h3>
+        <p>Movimentos verticais lentos da crosta.</p>
+        <ul style="margin-top:0.5rem;">
+          <li><strong>Regressão marinha</strong> — Mar recua</li>
+          <li><strong>Transgressão marinha</strong> — Mar avança</li>
+        </ul>
+      </div>`
+  },
+
+  'orogênese': {
+    icon: '⛰️',
+    title: 'Orogênese & Falhas',
+    subtitle: 'Anticlinal · Sinclinal · Falhas',
+    html: `
+      <div class="content-block">
+        <h3>Orogênese</h3>
+        <p>Pressões horizontais que formam montanhas e dobramentos.</p>
+        <ul style="margin-top:0.5rem;">
+          <li><strong>Anticlinal</strong> — Parte elevada da dobra</li>
+          <li><strong>Sinclinal</strong> — Parte rebaixada da dobra</li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Falhas</h3>
+        <p>Quebras nas rochas.</p>
+        <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-size:1.5rem;">⬇️</span>
+            <div>
+              <strong style="font-size:0.85rem;">Normal</strong>
+              <p>Um bloco desce.</p>
+            </div>
+          </div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-size:1.5rem;">⬆️</span>
+            <div>
+              <strong style="font-size:0.85rem;">Inversa</strong>
+              <p>Um bloco sobe.</p>
+            </div>
+          </div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-size:1.5rem;">↔️</span>
+            <div>
+              <strong style="font-size:0.85rem;">Transcorrente</strong>
+              <p>Blocos deslizam lado a lado.</p>
+            </div>
+          </div>
+        </div>
+      </div>`
+  },
+
+  terremotos: {
+    icon: '📊',
+    title: 'Terremotos & Tsunamis',
+    subtitle: 'Escalas Mercalli e Richter · Brasil',
+    html: `
+      <div class="content-block">
+        <p>Causados pelo atrito e deslocamento brusco das placas tectônicas.</p>
+        <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.85rem;color:var(--umber);">Hipocentro</strong>
+            <p>Ponto interno onde o sismo começa.</p>
+          </div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.85rem;color:var(--umber);">Epicentro</strong>
+            <p>Ponto na superfície acima do hipocentro.</p>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Escalas Sísmicas</h3>
+        <div style="margin-top:0.5rem;display:flex;gap:0.5rem;">
+          <div style="flex:1;background:var(--parchment);border-radius:10px;padding:0.75rem;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--umber);">Mercalli</div>
+            <div style="font-size:0.75rem;margin-top:0.25rem;">Mede os danos observados</div>
+            <span class="tag-pill" style="margin-top:0.4rem;">1 a 12</span>
+          </div>
+          <div style="flex:1;background:var(--parchment);border-radius:10px;padding:0.75rem;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--umber);">Richter</div>
+            <div style="font-size:0.75rem;margin-top:0.25rem;">Mede a magnitude/energia</div>
+            <span class="tag-pill" style="margin-top:0.4rem;">1 a 9</span>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Brasil e os Sismos</h3>
+        <p>O Brasil fica no <strong>centro da placa tectônica sul-americana</strong>. Por isso:</p>
+        <ul style="margin-top:0.5rem;">
+          <li>Terremotos são raros</li>
+          <li>Normalmente fracos</li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Maremotos (Tsunamis)</h3>
+        <p>Terremotos no fundo do oceano deslocam grandes massas de água.</p>
+        <ul style="margin-top:0.5rem;">
+          <li>Em alto-mar: ondas pequenas</li>
+          <li>Na costa: ondas gigantes</li>
+        </ul>
+      </div>`
+  },
+
+  vulcanismo: {
+    icon: '🌋',
+    title: 'Vulcanismo & Geiseres',
+    subtitle: 'Magma · Cinzas · Vapor',
+    html: `
+      <div class="content-block">
+        <h3>Vulcanismo</h3>
+        <p>Liberação de:</p>
+        <div style="display:flex;gap:0.3rem;margin-top:0.5rem;flex-wrap:wrap;">
+          <span class="tag-pill accent2">Magma</span>
+          <span class="tag-pill accent2">Cinzas</span>
+          <span class="tag-pill accent2">Gases</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Geiseres</h3>
+        <p>Água infiltra no solo, aquece próximo ao magma, vira vapor e é lançada para a superfície.</p>
+        <p style="margin-top:0.5rem;">Exemplo: <span class="tag-pill accent">Islândia</span></p>
+      </div>`
+  },
+
+  erosao_pluvial: {
+    icon: '☔',
+    title: 'Erosão Pluvial',
+    subtitle: 'Causada pela chuva',
+    html: `
+      <div class="content-block">
+        <p>Causada pela chuva. Evolução:</p>
+        <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;">
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--caramel);min-width:1.5rem;text-align:center;">1</span>
+            <strong>Sulcos</strong>
+          </div>
+          <div style="text-align:center;color:var(--caramel);">↓</div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--caramel);min-width:1.5rem;text-align:center;">2</span>
+            <strong>Ravinas</strong>
+          </div>
+          <div style="text-align:center;color:var(--caramel);">↓</div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--caramel);min-width:1.5rem;text-align:center;">3</span>
+            <strong>Voçorocas</strong>
+          </div>
+        </div>
+      </div>`
+  },
+
+  erosao_fluvial: {
+    icon: '🌊',
+    title: 'Erosão Fluvial',
+    subtitle: 'Alto Curso · Baixo Curso',
+    html: `
+      <div class="content-block">
+        <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.25rem;">
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.85rem;color:var(--umber);">Alto Curso</strong>
+            <p style="margin-top:0.3rem;">Predomina: erosão e transporte</p>
+            <p>Forma: vales em <strong>"V"</strong></p>
+          </div>
+          <div style="background:var(--parchment);border-radius:10px;padding:0.75rem;">
+            <strong style="font-size:0.85rem;color:var(--umber);">Baixo Curso</strong>
+            <p style="margin-top:0.3rem;">Predomina: sedimentação e acumulação</p>
+          </div>
+        </div>
+      </div>`
+  },
+
+  eolica: {
+    icon: '🌬️',
+    title: 'Ação Eólica',
+    subtitle: 'Ação dos ventos',
+    html: `
+      <div class="content-block">
+        <p>Ação dos ventos. Comum em:</p>
+        <div style="display:flex;gap:0.3rem;margin-top:0.5rem;flex-wrap:wrap;">
+          <span class="tag-pill">Desertos</span>
+          <span class="tag-pill">Litoral</span>
+        </div>
+        <p style="margin-top:0.75rem;">Forma:</p>
+        <div style="display:flex;gap:0.3rem;margin-top:0.3rem;flex-wrap:wrap;">
+          <span class="tag-pill accent2">Dunas</span>
+          <span class="tag-pill accent2">Oásis</span>
+        </div>
+      </div>`
+  },
+
+  marinha: {
+    icon: '🏖️',
+    title: 'Ação Marinha & Glacial',
+    subtitle: 'Falésias · Praias · Morainas',
+    html: `
+      <div class="content-block">
+        <h3>Ação Marinha — Erosão</h3>
+        <ul>
+          <li>Forma: <strong>falésias</strong></li>
+          <li>Rochas sedimentares sofrem desgaste mais rápido</li>
+        </ul>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Ação Marinha — Acumulação</h3>
+        <div style="display:flex;gap:0.3rem;margin-top:0.3rem;flex-wrap:wrap;">
+          <span class="tag-pill accent">Praias</span>
+          <span class="tag-pill accent">Restingas</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content-block">
+        <h3>Ação Glacial</h3>
+        <p>Grandes massas de gelo desgastam o relevo.</p>
+        <ul style="margin-top:0.5rem;">
+          <li>Transportam: <strong>morainas</strong></li>
+          <li>Formam: vales em <strong>"U"</strong></li>
+        </ul>
+      </div>`
+  }
+};
+
+// ─────────────────────────────────────────────────
+//  MODAL LOGIC
+// ─────────────────────────────────────────────────
+function open_modal(key) {
+  const d = MODALS[key];
+  if (!d) return;
+  document.getElementById('m-icon').textContent = d.icon;
+  document.getElementById('m-title').textContent = d.title;
+  document.getElementById('m-subtitle').textContent = d.subtitle;
+  document.getElementById('m-body').innerHTML = d.html;
+  const ov = document.getElementById('modal-overlay');
+  ov.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // scroll sheet to top
+  document.getElementById('modal-sheet').scrollTop = 0;
+}
+
+function close_modal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function close_modal_bg(e) {
+  if (e.target === document.getElementById('modal-overlay')) close_modal();
+}
+
+// Close on ESC
+document.addEventListener('keydown', e => { if (e.key === 'Escape') close_modal(); });
+
+// ─────────────────────────────────────────────────
+//  PWA — GENERATE ICONS & MANIFEST DYNAMICALLY
+// ─────────────────────────────────────────────────
+function drawIcon(size) {
+  const c = document.createElement('canvas');
+  c.width = size; c.height = size;
+  const ctx = c.getContext('2d');
+  // background gradient
+  const g = ctx.createLinearGradient(0, 0, size, size);
+  g.addColorStop(0,   '#6B4C35');
+  g.addColorStop(0.5, '#A0785A');
+  g.addColorStop(1,   '#C8A97E');
+  const r = size * 0.18;
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.lineTo(size - r, 0);
+  ctx.quadraticCurveTo(size, 0, size, r);
+  ctx.lineTo(size, size - r);
+  ctx.quadraticCurveTo(size, size, size - r, size);
+  ctx.lineTo(r, size);
+  ctx.quadraticCurveTo(0, size, 0, size - r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.fillStyle = g;
+  ctx.fill();
+  // text
+  ctx.fillStyle = '#F5EFE6';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `bold ${size * 0.38}px serif`;
+  ctx.fillText('🌍', size / 2, size / 2);
+  return c.toDataURL('image/png');
+}
+
+const icon192 = drawIcon(192);
+const icon512 = drawIcon(512);
+
+// Inline manifest
+const manifest = {
+  name: 'Revisão de Lucas M · Geo',
+  short_name: 'Geo Lucas M',
+  description: 'Revisão de Geografia — Estrutura da Terra e Dinâmica da Crosta',
+  start_url: '.',
+  display: 'standalone',
+  background_color: '#F5EFE6',
+  theme_color: '#C8A97E',
+  icons: [
+    { src: icon192, sizes: '192x192', type: 'image/png' },
+    { src: icon512, sizes: '512x512', type: 'image/png' }
+  ]
+};
+
+const blob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
+document.getElementById('manifest-link').href = URL.createObjectURL(blob);
+
+// apple touch icon
+const li = document.createElement('link');
+li.rel = 'apple-touch-icon';
+li.href = icon192;
+document.head.appendChild(li);
+
+// ─────────────────────────────────────────────────
+//  PWA — INSTALL PROMPT
+// ─────────────────────────────────────────────────
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('install-banner').classList.add('show');
+});
+
+document.getElementById('install-btn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  if (outcome === 'accepted') {
+    document.getElementById('install-banner').classList.remove('show');
+  }
+  deferredPrompt = null;
+});
+
+// ─────────────────────────────────────────────────
+//  SERVICE WORKER (inline via Blob for offline)
+// ─────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'geo-lucas-v1';
+    self.addEventListener('install', e => {
+      e.waitUntil(caches.open(CACHE).then(c => c.add('/')));
+    });
+    self.addEventListener('fetch', e => {
+      e.respondWith(
+        caches.match(e.request).then(r => r || fetch(e.request))
+      );
+    });
+  `;
+  const swBlob = new Blob([swCode], { type: 'application/javascript' });
+  navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
+}
+</script>
+</body>
+</html>
