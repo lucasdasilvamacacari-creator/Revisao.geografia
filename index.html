@@ -327,6 +327,220 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     .topic-btn { animation: fadeUp 0.4s both; }
+
+    /* ══════════════════════════════════
+       QUIZ SECTION
+    ══════════════════════════════════ */
+    .quiz-wrapper {
+      background: #fff;
+      border: 1.5px solid var(--sand);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(100,60,20,0.09);
+    }
+
+    /* ── quiz header bar ── */
+    .quiz-header {
+      background: linear-gradient(120deg, var(--umber) 0%, var(--terracotta) 100%);
+      padding: 1.25rem 1.4rem;
+      display: flex; align-items: center; gap: 0.85rem;
+    }
+    .quiz-header-icon {
+      font-size: 1.6rem;
+      width: 3rem; height: 3rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      backdrop-filter: blur(4px);
+    }
+    .quiz-header-text .quiz-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .quiz-header-text .quiz-desc {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.72);
+      margin-top: 0.15rem;
+    }
+
+    /* ── progress bar ── */
+    .quiz-progress-bar-wrap {
+      background: var(--parchment);
+      padding: 0.7rem 1.4rem 0;
+    }
+    .quiz-progress-meta {
+      display: flex; justify-content: space-between;
+      font-size: 0.7rem; color: var(--terracotta);
+      margin-bottom: 0.3rem; font-weight: 500;
+    }
+    .quiz-progress-track {
+      height: 5px; background: var(--sand);
+      border-radius: 99px; overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--caramel), var(--terracotta));
+      border-radius: 99px;
+      transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── question area ── */
+    .quiz-question-area {
+      padding: 1.2rem 1.4rem 0;
+    }
+    .quiz-q-number {
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--caramel);
+      font-weight: 600; margin-bottom: 0.5rem;
+    }
+    .quiz-q-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; line-height: 1.55;
+      color: var(--dark); font-weight: 500;
+    }
+
+    /* ── answer options ── */
+    .quiz-options {
+      padding: 1rem 1.4rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .quiz-opt {
+      width: 100%;
+      background: var(--parchment);
+      border: 1.5px solid var(--sand);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.18s cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .quiz-opt:hover:not(:disabled) {
+      border-color: var(--caramel);
+      background: #fff;
+      transform: translateX(3px);
+      box-shadow: 0 3px 12px rgba(100,60,20,0.1);
+    }
+    .quiz-opt:disabled { cursor: default; }
+    .quiz-opt-letter {
+      width: 1.75rem; height: 1.75rem;
+      background: var(--sand);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--umber);
+      flex-shrink: 0;
+      transition: all 0.18s;
+    }
+    .quiz-opt-text {
+      font-size: 0.875rem; line-height: 1.45;
+      color: var(--dark);
+    }
+
+    /* ── correct / wrong states ── */
+    .quiz-opt.correct {
+      background: #EAF4EC;
+      border-color: var(--accent);
+      transform: none;
+    }
+    .quiz-opt.correct .quiz-opt-letter {
+      background: var(--accent); color: #fff;
+    }
+    .quiz-opt.wrong {
+      background: #FAE9E4;
+      border-color: var(--accent2);
+      transform: none;
+    }
+    .quiz-opt.wrong .quiz-opt-letter {
+      background: var(--accent2); color: #fff;
+    }
+    .quiz-opt.dimmed { opacity: 0.38; }
+
+    /* ── feedback strip ── */
+    .quiz-feedback {
+      margin: 0 1.4rem 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-size: 0.82rem; line-height: 1.5;
+      display: none;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.ok {
+      background: #EAF4EC; color: #2D6A40;
+      border: 1px solid #B2D9BD;
+    }
+    .quiz-feedback.ko {
+      background: #FAE9E4; color: #8B3320;
+      border: 1px solid #E8B9A8;
+    }
+    .quiz-feedback strong { display: block; margin-bottom: 0.2rem; }
+
+    /* ── next button ── */
+    .quiz-next-btn {
+      display: none;
+      margin: 0 1.4rem 1.4rem;
+      width: calc(100% - 2.8rem);
+      background: linear-gradient(120deg, var(--umber), var(--terracotta));
+      color: #fff;
+      border: none; border-radius: 12px;
+      padding: 0.85rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      cursor: pointer;
+      display: none; align-items: center; justify-content: center; gap: 0.5rem;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .quiz-next-btn.show { display: flex; }
+    .quiz-next-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .quiz-next-btn:active { transform: translateY(0); }
+
+    /* ── result screen ── */
+    .quiz-result {
+      padding: 2rem 1.4rem;
+      text-align: center;
+      display: none;
+    }
+    .quiz-result.show { display: block; }
+    .quiz-result .result-emoji {
+      font-size: 3.5rem;
+      display: block; margin-bottom: 0.75rem;
+    }
+    .quiz-result .result-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .quiz-result .result-score {
+      font-size: 2.5rem; font-weight: 300;
+      color: var(--terracotta);
+      font-family: 'Playfair Display', serif;
+      margin: 0.5rem 0;
+    }
+    .quiz-result .result-msg {
+      font-size: 0.85rem; color: var(--terracotta);
+      margin-bottom: 1.5rem; line-height: 1.6;
+    }
+    .quiz-restart-btn {
+      background: linear-gradient(120deg, var(--umber), var(--terracotta));
+      color: #fff; border: none; border-radius: 12px;
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .quiz-restart-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    @keyframes popIn {
+      0%   { opacity: 0; transform: scale(0.92) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .quiz-animate { animation: popIn 0.3s cubic-bezier(.4,0,.2,1) both; }
   </style>
 </head>
 <body>
@@ -518,6 +732,45 @@
   </div>
 
 </main>
+
+<!-- ═══════════════ QUIZ SECTION ═══════════════ -->
+<section style="max-width:560px;margin:0 auto;padding:0 1rem 2.5rem;position:relative;z-index:1;">
+  <p class="section-label">🎯 Treino · Quiz Rápido</p>
+  <div class="quiz-wrapper" id="quiz-wrapper">
+    <div class="quiz-header">
+      <div class="quiz-header-icon">🧠</div>
+      <div class="quiz-header-text">
+        <div class="quiz-title">Quiz de Revisão</div>
+        <div class="quiz-desc">1 tentativa por pergunta · 4 alternativas</div>
+      </div>
+    </div>
+    <div class="quiz-progress-bar-wrap" id="quiz-progress-wrap">
+      <div class="quiz-progress-meta">
+        <span id="quiz-q-counter">Pergunta 1 de 20</span>
+        <span id="quiz-score-live">✔ 0 &nbsp;✘ 0</span>
+      </div>
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="quiz-question-area" id="quiz-q-area">
+      <div class="quiz-q-number" id="quiz-q-num">Pergunta 01</div>
+      <div class="quiz-q-text" id="quiz-q-text">…</div>
+    </div>
+    <div class="quiz-options" id="quiz-opts"></div>
+    <div class="quiz-feedback" id="quiz-feedback"></div>
+    <button class="quiz-next-btn" id="quiz-next-btn" onclick="quiz_next()">
+      Próxima pergunta <span>→</span>
+    </button>
+    <div class="quiz-result" id="quiz-result">
+      <span class="result-emoji" id="res-emoji">🏆</span>
+      <div class="result-title">Quiz concluído!</div>
+      <div class="result-score" id="res-score">0 / 20</div>
+      <div class="result-msg" id="res-msg"></div>
+      <button class="quiz-restart-btn" onclick="quiz_start()">↺ &nbsp;Tentar novamente</button>
+    </div>
+  </div>
+</section>
 
 <footer>© Revisão de Lucas M · Geografia · Todos os direitos reservados</footer>
 
@@ -1162,6 +1415,311 @@ document.getElementById('install-btn').addEventListener('click', async () => {
   }
   deferredPrompt = null;
 });
+
+// ═══════════════════════════════════════════════════
+//  QUIZ
+// ═══════════════════════════════════════════════════
+const QUIZ_BANK = [
+  {
+    q: 'Qual é o nome do único supercontinente que existiu há cerca de 200 milhões de anos?',
+    a: 'Pangeia',
+    w: ['Gondwana', 'Laurásia', 'Rodínia']
+  },
+  {
+    q: 'Em qual camada da Terra ocorrem as correntes de convecção que movimentam as placas tectônicas?',
+    a: 'Manto',
+    w: ['Núcleo interno', 'Crosta oceânica', 'Litosfera']
+  },
+  {
+    q: 'Quais são os principais elementos que formam o núcleo terrestre?',
+    a: 'Níquel e Ferro (NiFe)',
+    w: ['Silício e Magnésio', 'Cálcio e Potássio', 'Carbono e Enxofre']
+  },
+  {
+    q: 'No limite convergente de placas, quando a placa oceânica mergulha sob a continental, esse processo se chama:',
+    a: 'Subducção',
+    w: ['Obducção', 'Orogênese', 'Epirogênese']
+  },
+  {
+    q: 'A Dorsal Mesoatlântica é um exemplo clássico de qual tipo de limite de placas?',
+    a: 'Divergente',
+    w: ['Convergente', 'Transformante', 'Conservativo']
+  },
+  {
+    q: 'No limite transformante (conservativo), qual é a principal consequência geológica?',
+    a: 'Terremotos',
+    w: ['Formação de vulcões', 'Formação de montanhas', 'Criação de nova crosta oceânica']
+  },
+  {
+    q: 'O Havaí é um exemplo de formação geológica causada por:',
+    a: 'Hotspot',
+    w: ['Rift Valley', 'Limite divergente', 'Subducção']
+  },
+  {
+    q: 'Qual tipo de rocha é formada pelo resfriamento lento do magma no interior da crosta, gerando cristais maiores?',
+    a: 'Rocha magmática intrusiva (plutônica)',
+    w: ['Rocha magmática extrusiva', 'Rocha sedimentar clástica', 'Rocha metamórfica']
+  },
+  {
+    q: 'O granito é um exemplo de qual tipo de rocha?',
+    a: 'Magmática intrusiva',
+    w: ['Magmática extrusiva', 'Sedimentar orgânica', 'Metamórfica']
+  },
+  {
+    q: 'O mármore é uma rocha metamórfica que se origina a partir de qual rocha?',
+    a: 'Calcário',
+    w: ['Granito', 'Arenito', 'Basalto']
+  },
+  {
+    q: 'A compactação de sedimentos que forma rochas sedimentares é chamada de:',
+    a: 'Litificação / Diagênese',
+    w: ['Metamorfismo', 'Arrefecimento', 'Intemperismo']
+  },
+  {
+    q: 'Rochas sedimentares formadas por restos de seres vivos são classificadas como:',
+    a: 'Orgânicas',
+    w: ['Clásticas', 'Químicas', 'Detríticas']
+  },
+  {
+    q: 'O desgaste natural das rochas por ação física, química ou biológica é chamado de:',
+    a: 'Intemperismo / Meteorização',
+    w: ['Diagênese', 'Litificação', 'Orogênese']
+  },
+  {
+    q: 'Movimentos verticais lentos da crosta que podem causar regressão ou transgressão marinha são denominados:',
+    a: 'Epirogênese',
+    w: ['Orogênese', 'Diastrofismo horizontal', 'Tectonismo transformante']
+  },
+  {
+    q: 'A parte elevada de uma dobra formada por pressões horizontais na crosta é chamada de:',
+    a: 'Anticlinal',
+    w: ['Sinclinal', 'Fossa tectônica', 'Rift Valley']
+  },
+  {
+    q: 'Em uma falha geológica normal, o que ocorre com o bloco afetado?',
+    a: 'Um bloco desce',
+    w: ['Um bloco sobe', 'Os blocos deslizam lado a lado', 'Ocorre dobramento']
+  },
+  {
+    q: 'O ponto interno da Terra onde o sismo se origina é chamado de:',
+    a: 'Hipocentro',
+    w: ['Epicentro', 'Foco superficial', 'Isocentro']
+  },
+  {
+    q: 'Qual escala sísmica mede a magnitude e a energia liberada por um terremoto?',
+    a: 'Richter',
+    w: ['Mercalli', 'Beaufort', 'Saffir-Simpson']
+  },
+  {
+    q: 'Por que os terremotos são raros e geralmente fracos no Brasil?',
+    a: 'O Brasil está no centro da placa tectônica sul-americana',
+    w: ['O Brasil está em uma zona de subducção', 'O solo brasileiro é muito sedimentar', 'O Brasil está próximo da Dorsal Mesoatlântica']
+  },
+  {
+    q: 'A sequência correta da evolução da erosão pluvial é:',
+    a: 'Sulcos → Ravinas → Voçorocas',
+    w: ['Ravinas → Sulcos → Voçorocas', 'Voçorocas → Sulcos → Ravinas', 'Sulcos → Voçorocas → Ravinas']
+  },
+  {
+    q: 'No alto curso de um rio, qual processo predomina e qual forma de vale é gerada?',
+    a: 'Erosão e transporte; vale em "V"',
+    w: ['Sedimentação; vale em "U"', 'Acumulação; delta fluvial', 'Deposição; planície de inundação']
+  },
+  {
+    q: 'Qual é o exemplo clássico de Hotspot citado nos seus estudos?',
+    a: 'Havaí',
+    w: ['Islândia', 'Japão', 'Filipinas']
+  },
+  {
+    q: 'Os geiseres funcionam porque:',
+    a: 'Água infiltra, aquece perto do magma, vira vapor e é lançada à superfície',
+    w: ['Água oceânica entra em fissuras e é expulsa por pressão tectônica', 'Rios subterrâneos são aquecidos por correntes de convecção do manto', 'Chuvas intensas formam reservatórios que transbordam em erupções periódicas']
+  },
+  {
+    q: 'As falésias são formadas principalmente por qual agente externo?',
+    a: 'Erosão marinha',
+    w: ['Erosão eólica', 'Erosão fluvial', 'Ação glacial']
+  },
+  {
+    q: 'As dunas e oásis são formas de relevo associadas principalmente à:',
+    a: 'Ação eólica',
+    w: ['Ação glacial', 'Erosão pluvial', 'Ação marinha']
+  },
+  {
+    q: 'Qual é o nome das províncias geológicas ricas em minerais metálicos, compostas por rochas pré-cambrianas?',
+    a: 'Crátons / Escudos Cristalinos',
+    w: ['Bacias Sedimentares', 'Dobramentos Modernos', 'Rifts continentais']
+  },
+  {
+    q: 'Os Andes e o Himalaia são exemplos de:',
+    a: 'Dobramentos Modernos',
+    w: ['Escudos Cristalinos', 'Bacias Sedimentares', 'Rifts tectônicos']
+  },
+  {
+    q: 'Qual é a época geológica em que a ação humana passou a modificar intensamente o planeta, deixando marcas como plásticos e concreto?',
+    a: 'Antropoceno',
+    w: ['Holoceno', 'Pleistoceno', 'Capitaloceno']
+  },
+  {
+    q: 'A Pangeia dividiu-se em dois grandes blocos continentais. Quais foram eles?',
+    a: 'Laurásia e Gondwana',
+    w: ['Rodínia e Pantalassa', 'Euroásia e América do Sul', 'Gondwana e Pannotia']
+  },
+  {
+    q: 'As morainas são materiais transportados por qual agente externo?',
+    a: 'Geleiras (ação glacial)',
+    w: ['Rios (erosão fluvial)', 'Ventos (ação eólica)', 'Ondas (ação marinha)']
+  }
+];
+
+// ─── state ───
+let quiz_questions = [];
+let quiz_index     = 0;
+let quiz_correct   = 0;
+let quiz_wrong     = 0;
+const TOTAL_Q      = 20;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function quiz_start() {
+  quiz_questions = shuffle(QUIZ_BANK).slice(0, TOTAL_Q);
+  quiz_index   = 0;
+  quiz_correct = 0;
+  quiz_wrong   = 0;
+
+  document.getElementById('quiz-progress-wrap').style.display = '';
+  document.getElementById('quiz-q-area').style.display        = '';
+  document.getElementById('quiz-opts').style.display          = '';
+  document.getElementById('quiz-result').classList.remove('show');
+  document.getElementById('quiz-next-btn').classList.remove('show');
+  document.getElementById('quiz-feedback').classList.remove('show');
+
+  quiz_render();
+}
+
+function quiz_render() {
+  const q   = quiz_questions[quiz_index];
+  const num = quiz_index + 1;
+
+  // progress
+  document.getElementById('quiz-q-counter').textContent = `Pergunta ${num} de ${TOTAL_Q}`;
+  document.getElementById('quiz-score-live').innerHTML   = `✔ ${quiz_correct} &nbsp;✘ ${quiz_wrong}`;
+  document.getElementById('quiz-prog-fill').style.width  = `${((num - 1) / TOTAL_Q) * 100}%`;
+
+  // question
+  document.getElementById('quiz-q-num').textContent  = `Pergunta ${String(num).padStart(2,'0')}`;
+  document.getElementById('quiz-q-text').textContent = q.q;
+
+  // options — shuffle answers
+  const opts   = shuffle([q.a, ...q.w]);
+  const labels = ['A', 'B', 'C', 'D'];
+  const container = document.getElementById('quiz-opts');
+  container.innerHTML = '';
+
+  opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt quiz-animate';
+    btn.style.animationDelay = `${i * 0.06}s`;
+    btn.innerHTML = `
+      <span class="quiz-opt-letter">${labels[i]}</span>
+      <span class="quiz-opt-text">${opt}</span>`;
+    btn.addEventListener('click', () => quiz_answer(opt === q.a, btn, container, q.a));
+    container.appendChild(btn);
+  });
+
+  // reset feedback & next
+  const fb = document.getElementById('quiz-feedback');
+  fb.classList.remove('show','ok','ko');
+  document.getElementById('quiz-next-btn').classList.remove('show');
+}
+
+function quiz_answer(is_correct, clicked_btn, container, correct_text) {
+  // disable all
+  container.querySelectorAll('.quiz-opt').forEach(b => {
+    b.disabled = true;
+    // highlight correct answer
+    if (b.querySelector('.quiz-opt-text').textContent === correct_text) {
+      b.classList.add('correct');
+    } else if (b !== clicked_btn) {
+      b.classList.add('dimmed');
+    }
+  });
+
+  if (is_correct) {
+    clicked_btn.classList.add('correct');
+    quiz_correct++;
+  } else {
+    clicked_btn.classList.add('wrong');
+    quiz_wrong++;
+  }
+
+  // feedback
+  const fb = document.getElementById('quiz-feedback');
+  if (is_correct) {
+    fb.className = 'quiz-feedback show ok';
+    fb.innerHTML = `<strong>✔ Correto!</strong>Boa, Lucas! Continue assim.`;
+  } else {
+    fb.className = 'quiz-feedback show ko';
+    fb.innerHTML = `<strong>✘ Incorreto</strong>A resposta certa era: <em>${correct_text}</em>`;
+  }
+
+  document.getElementById('quiz-score-live').innerHTML = `✔ ${quiz_correct} &nbsp;✘ ${quiz_wrong}`;
+
+  // show next or finish
+  const nextBtn = document.getElementById('quiz-next-btn');
+  if (quiz_index < TOTAL_Q - 1) {
+    nextBtn.textContent = '';
+    nextBtn.innerHTML   = 'Próxima pergunta <span>→</span>';
+    nextBtn.classList.add('show');
+  } else {
+    nextBtn.innerHTML = 'Ver resultado <span>→</span>';
+    nextBtn.classList.add('show');
+  }
+}
+
+function quiz_next() {
+  quiz_index++;
+  if (quiz_index >= TOTAL_Q) {
+    quiz_show_result();
+    return;
+  }
+  document.getElementById('quiz-next-btn').classList.remove('show');
+  document.getElementById('quiz-feedback').classList.remove('show','ok','ko');
+  quiz_render();
+}
+
+function quiz_show_result() {
+  document.getElementById('quiz-progress-wrap').style.display = 'none';
+  document.getElementById('quiz-q-area').style.display        = 'none';
+  document.getElementById('quiz-opts').style.display          = 'none';
+  document.getElementById('quiz-next-btn').classList.remove('show');
+  document.getElementById('quiz-feedback').classList.remove('show');
+
+  const pct = quiz_correct / TOTAL_Q;
+  let emoji, msg;
+  if (pct >= 0.9)      { emoji = '🏆'; msg = 'Excelente! Você domina o conteúdo. Está pronto para a prova!'; }
+  else if (pct >= 0.7) { emoji = '🌟'; msg = 'Muito bom! Alguns pontos merecem revisão rápida.'; }
+  else if (pct >= 0.5) { emoji = '📚'; msg = 'Metade certa! Vale revisar os tópicos que errou antes da prova.'; }
+  else                  { emoji = '💪'; msg = 'Continue estudando! Revise os tópicos acima e tente novamente.'; }
+
+  document.getElementById('res-emoji').textContent  = emoji;
+  document.getElementById('res-score').textContent  = `${quiz_correct} / ${TOTAL_Q}`;
+  document.getElementById('res-msg').textContent    = msg;
+  document.getElementById('quiz-result').classList.add('show');
+
+  // update progress to 100%
+  document.getElementById('quiz-prog-fill').style.width = '100%';
+}
+
+// Auto-start quiz on load
+window.addEventListener('DOMContentLoaded', quiz_start);
 
 // ─────────────────────────────────────────────────
 //  SERVICE WORKER (inline via Blob for offline)
