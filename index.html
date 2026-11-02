@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Estudo Biológicas – 1º ano EM</title>
 <style>
-:root{--bg:#f3f6f1;--card:#fff;--tx:#1d2a24;--mut:#5d6b64;--bd:#d5ddd6;--bio:#2f7d4f;--fis:#2d5fa8;--qui:#a8512d;--ok:#1f7a3f;--okbg:#e0f3e6;--no:#b3261e;--nobg:#fbe5e3}
-@media(prefers-color-scheme:dark){:root{--bg:#141a17;--card:#1d2621;--tx:#e8eee9;--mut:#9aa8a0;--bd:#33403a;--bio:#5fbf85;--fis:#7aa7ec;--qui:#e59a74;--ok:#6fd392;--okbg:#17321f;--no:#ff8a80;--nobg:#3a1c1a}}
+:root{--bg:#f3f6f1;--card:#fff;--tx:#1d2a24;--mut:#5d6b64;--bd:#d5ddd6;--bio:#2f7d4f;--fis:#2d5fa8;--qui:#a8512d;--esp:#7a3fa0;--ok:#1f7a3f;--okbg:#e0f3e6;--no:#b3261e;--nobg:#fbe5e3}
+@media(prefers-color-scheme:dark){:root{--bg:#141a17;--card:#1d2621;--tx:#e8eee9;--mut:#9aa8a0;--bd:#33403a;--bio:#5fbf85;--fis:#7aa7ec;--qui:#e59a74;--esp:#c39be0;--ok:#6fd392;--okbg:#17321f;--no:#ff8a80;--nobg:#3a1c1a}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.55 Georgia,"Times New Roman",serif}
 main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
@@ -87,7 +87,13 @@ qui:{n:"Química",c:"var(--qui)",r:[
 ["Concentração × densidade","Concentração: massa do soluto ÷ volume da solução. Densidade: massa da solução inteira ÷ seu volume."],
 ["Mol/L","M = n/V, n = m/MM e C = M·MM. A massa molar vem da soma das massas atômicas da tabela periódica."],
 ["Solubilidade","Coeficiente de solubilidade é o máximo que dissolve em certa quantidade de água. 'Insolúvel' = dissolve muito pouco."],
-["Funções inorgânicas","Ácido: H ionizável (H₂SO₄, HCl). Base: OH⁻ (KOH, Al(OH)₃, Mg(OH)₂ nos antiácidos). Sal: vem da neutralização (NaCl). Óxido: binário com oxigênio (SO₂, CO₂, CaO)."]]}
+["Funções inorgânicas","Ácido: H ionizável (H₂SO₄, HCl). Base: OH⁻ (KOH, Al(OH)₃, Mg(OH)₂ nos antiácidos). Sal: vem da neutralização (NaCl). Óxido: binário com oxigênio (SO₂, CO₂, CaO)."]]},
+esp:{n:"Química Especial",c:"var(--esp)",r:[
+["Óxido","Composto binário com oxigênio, em que o O é o elemento mais eletronegativo. Fórmula geral: ExOy."],
+["Molecular (ametal + O)","Nome com prefixos: mono, di, tri, tetra, penta... Ex.: CO₂ = dióxido de carbono; P₂O₅ = pentóxido de difósforo. Sem 'mono' no 2º elemento."],
+["Iônico (metal + O)","Nome: óxido de + elemento. Se houver mais de uma carga possível, use romano: Fe₂O₃ = óxido de ferro III."],
+["Peróxido","Tem o grupo O₂²⁻. Aparece com grupos 1, 2 e H. Nome: peróxido de + elemento. H₂O₂, Na₂O₂, CaO₂."],
+["Indicadores","Repolho roxo: vermelho → rosa → roxo → azul → verde → amarelo (do mais ácido ao mais básico). Fenolftaleína: incolor em ácido; rosa/violeta/vermelho em base."]]}
 };
 const Q=[
 ["bio","Em um dia quente, com o solo muito seco, uma planta tende a:",["abrir os estômatos para aumentar a absorção de água pelas folhas.","fechar os estômatos, reduzindo a transpiração e também a entrada de CO₂.","manter os estômatos abertos, pois a transpiração resfria a raiz.","transportar seiva elaborada pelo xilema para compensar a perda de água.","abrir os estômatos porque as células-guarda ficam flácidas."],1,"Sem água, as células-guarda perdem íons e água, ficam flácidas e o estômato fecha. A transpiração cai, mas a entrada de CO₂ (e a fotossíntese) também."],
@@ -104,7 +110,32 @@ const Q=[
 ["qui","Solução de KOH com 28 g/L (K = 39; O = 16; H = 1). A concentração em mol/L e a massa de KOH em 200 mL são:",["0,5 mol/L e 5,6 g","0,5 mol/L e 56 g","2,0 mol/L e 5,6 g","1,0 mol/L e 28 g","0,28 mol/L e 140 g"],0,"MM = 39 + 16 + 1 = 56 g/mol. M = 28 ÷ 56 = 0,5 mol/L. Em 0,2 L: m = 28 × 0,2 = 5,6 g."],
 ["qui","Considere: I. H₂SO₄ é ácido usado em baterias. II. KOH é um sal. III. SO₂ é óxido liberado na queima de combustíveis com enxofre. IV. Al(OH)₃ é base. Estão corretas:",["I e II","II e IV","I e III","I, III e IV","todas"],3,"KOH tem OH⁻, então é base, não sal. As afirmações I, III e IV estão corretas."],
 ["qui","Foram dissolvidos 4 g de NaOH em 500 mL de solução. A concentração comum é:",["2 g/L","4 g/L","8 g/L","16 g/L","0,8 g/L"],2,"500 mL = 0,5 L. C = 4 ÷ 0,5 = 8 g/L."],
-["qui","O Mg(OH)₂, presente em antiácidos, pertence à função:",["ácido","base","sal","óxido","hidrocarboneto"],1,"Tem o grupo OH⁻, então é uma base. Ela neutraliza o excesso de ácido no estômago."]
+["qui","O Mg(OH)₂, presente em antiácidos, pertence à função:",["ácido","base","sal","óxido","hidrocarboneto"],1,"Tem o grupo OH⁻, então é uma base. Ela neutraliza o excesso de ácido no estômago."],
+["esp","Qual das substâncias abaixo é um óxido?",["NaCl","H₂O","HCl","KOH","NaOH"],1,"Óxido é composto binário com oxigênio como elemento mais eletronegativo. H₂O tem só 2 elementos, H e O. NaCl e HCl não têm O; KOH e NaOH têm 3 elementos (são bases)."],
+["esp","O nome do P₂O₅ é:",["pentóxido de difósforo","óxido de fósforo V","pentóxido de fósforo","dióxido de pentafósforo","óxido de difósforo"],0,"5 oxigênios dão 'pentóxido'. 2 fósforos dão 'difósforo'. É molecular (ametal + O), então usa prefixos nos dois."],
+["esp","O nome correto do CO₂ é:",["monóxido de carbono","dióxido de monocarbono","dióxido de carbono","óxido de carbono","trióxido de carbono"],2,"2 oxigênios = dióxido. Como há só 1 carbono, não se coloca 'mono' no segundo elemento."],
+["esp","Fe₂O₃ é um óxido iônico formado por Fe³⁺ e O²⁻. Seu nome é:",["óxido de ferro II","óxido de ferro III","dióxido de ferro","peróxido de ferro","monóxido de diferro"],1,"Óxido iônico: 'óxido de + elemento'. O ferro tem mais de uma carga possível, então se indica a carga em romano: Fe³⁺ = ferro III."],
+["esp","Qual fórmula representa um peróxido?",["Na₂O","CO₂","H₂O₂","CaO","SO₃"],2,"Peróxido tem o grupo O₂²⁻. H₂O₂ é o peróxido de hidrogênio (molecular). Na₂O e CaO são óxidos iônicos; CO₂ e SO₃ são moleculares."],
+["esp","Qual par fórmula/classificação está correto?",["SO₃ – óxido iônico","Na₂O – óxido molecular","CaO – óxido iônico","CO – peróxido","Na₂O₂ – óxido molecular"],2,"CaO = metal + oxigênio, logo iônico. SO₃ e CO são moleculares (ametal + O). Na₂O é iônico. Na₂O₂ é peróxido."],
+["esp","O nome de Na₂O₂ é:",["óxido de sódio","dióxido de sódio","peróxido de sódio","dióxido de dissódio","óxido de sódio II"],2,"Na₂O₂ tem o grupo O₂²⁻ ligado ao sódio (grupo 1): peróxido de sódio."],
+["esp","Pelo roteiro, o suco de repolho roxo em uma solução de pH 12 fica:",["vermelho","rosa","roxo","verde","amarelo"],3,"A faixa de pH 11 a 13 corresponde à cor verde. Sequência: vermelho, rosa, roxo, azul, verde, amarelo."],
+["esp","Em meio ácido, a fenolftaleína fica:",["rosa","vermelha","violeta","incolor","azul"],3,"Fenolftaleína é incolor em meio ácido. Em meio básico, vai de rosa a violeta ou vermelho."],
+["esp","O nome do Cl₂O é:",["monóxido de dicloro","óxido de cloro","dióxido de cloro","monóxido de cloro","óxido de dicloro"],0,"1 oxigênio dá 'monóxido'. 2 cloros dão 'dicloro'. Como é molecular (ametal + O), usa prefixos nos dois."],
+["bio","Quando as células-guarda ficam túrgidas, o estômato:",["fecha, porque a água sai das células.","abre, porque as células se curvam e ampliam o ostíolo.","continua igual, pois o turgor não interfere.","fecha, porque entra CO₂ demais.","abre, porque as células ficam flácidas."],1,"Células cheias de água (túrgidas) se curvam e abrem o ostíolo. Flácidas, o estômato fecha."],
+["bio","Qual condição tende a DIMINUIR a transpiração?",["vento forte","ar com muita umidade","alta luminosidade","temperatura elevada","ar muito seco"],1,"Com o ar já úmido, a água evapora menos da folha. Luz, calor, vento e ar seco aumentam a transpiração."],
+["bio","Os plasmodesmos são:",["poros da cutícula por onde sai vapor.","as células que formam o xilema.","conexões entre o citoplasma de células vizinhas, usadas na via simplástica.","faixas de suberina da endoderme.","gotas de água eliminadas pelas folhas."],2,"Plasmodesmos são 'pontes' citoplasmáticas entre células vizinhas. É por elas que a água segue pela via simplástica."],
+["bio","A seca fisiológica ocorre quando:",["há água no solo, mas a planta não consegue absorvê-la.","a planta perde todas as folhas.","o solo está completamente seco.","os estômatos ficam sempre abertos.","a planta faz mais fotossíntese."],0,"É 'água presente, porém indisponível', como em solo muito salgado ou muito frio."],
+["bio","Na teoria da coesão-tensão, a força que puxa a coluna de água é gerada principalmente por:",["pressão da raiz","evaporação (transpiração) nas folhas","bombeamento pelo floema","gutação","fotossíntese no caule"],1,"A água que evapora na folha puxa a coluna, e a coesão entre as moléculas mantém a 'corrente' unida."],
+["fis","Qual é a energia cinética de um corpo de 2 kg a 3 m/s?",["3 J","6 J","9 J","18 J","27 J"],2,"Ec = m·v²/2 = 2 × 3² ÷ 2 = 2 × 9 ÷ 2 = 9 J."],
+["fis","72 km/h correspondem, em m/s, a:",["20","25","72","259","2"],0,"Divida por 3,6: 72 ÷ 3,6 = 20 m/s."],
+["fis","Qual é a Epg de um corpo de 2 kg a 5 m do chão (g = 10 m/s², Epg = 0 no chão)?",["10 J","50 J","100 J","200 J","1.000 J"],2,"Epg = m·g·h = 2 × 10 × 5 = 100 J."],
+["fis","Em uma descida sem atrito, o que acontece com a energia?",["Ec e Epg aumentam juntas.","A Epg se transforma em Ec, e a soma permanece constante.","A Ec se transforma em Epg.","A energia total diminui.","A Epg aumenta e a Ec fica constante."],1,"Descendo, a altura diminui (Epg cai) e a velocidade aumenta (Ec sobe). Sem atrito, Ec + Epg não muda."],
+["fis","Um ferro de 1.000 W fica ligado 2 h por dia, por 30 dias. Com tarifa de R$ 0,60/kWh, o custo mensal é:",["R$ 12,00","R$ 18,00","R$ 36,00","R$ 60,00","R$ 72,00"],2,"1.000 W = 1 kW. 1 × 2 = 2 kWh/dia. × 30 = 60 kWh. 60 × 0,60 = R$ 36,00."],
+["qui","Qual massa de soluto há em 2 L de uma solução de 15 g/L?",["7,5 g","15 g","30 g","60 g","0,13 g"],2,"m = C × V = 15 × 2 = 30 g."],
+["qui","A massa molar do H₂SO₄ (H = 1; S = 32; O = 16) é:",["49 g/mol","82 g/mol","114 g/mol","98 g/mol","196 g/mol"],3,"2 × 1 + 32 + 4 × 16 = 2 + 32 + 64 = 98 g/mol."],
+["qui","Foram dissolvidos 40 g de NaOH (MM = 40 g/mol) em 2 L de solução. A concentração em mol/L é:",["0,5 mol/L","1 mol/L","2 mol/L","20 mol/L","80 mol/L"],0,"n = 40 ÷ 40 = 1 mol. M = n ÷ V = 1 ÷ 2 = 0,5 mol/L."],
+["qui","Qual afirmação sobre concentração e densidade está correta?",["São a mesma grandeza.","Concentração usa a massa do soluto; densidade usa a massa da solução inteira.","Densidade usa só a massa do soluto.","Concentração usa a massa da solução inteira.","As duas sempre têm o mesmo valor."],1,"Concentração = massa do soluto ÷ volume da solução. Densidade = massa da solução ÷ volume da solução."],
+["qui","O CaO, usado na construção civil como cal virgem, pertence à função:",["ácido","base","sal","óxido","hidreto"],3,"CaO é composto binário com oxigênio, ou seja, um óxido (iônico)."]
 ];
 const $=id=>document.getElementById(id);
 let cur="bio",tab=1,qs=[],i=0,score=0,done=false;
@@ -250,7 +281,54 @@ qui:`
 <tr><td><b>Base</b></td><td>termina em <b>OH</b>: NaOH, KOH, Al(OH)₃</td><td>antiácidos, soda cáustica</td></tr>
 <tr><td><b>Sal</b></td><td>vem da reação ácido + base: NaCl</td><td>sal de cozinha</td></tr>
 <tr><td><b>Óxido</b></td><td><b>2 elementos</b>, um deles é O: SO₂, CO₂, CaO</td><td>queima de combustível, cal na construção</td></tr></table>
-<div class="warn"><b>Pegadinha:</b> KOH tem OH, então é <b>base</b>, não sal.</div>`
+<div class="warn"><b>Pegadinha:</b> KOH tem OH, então é <b>base</b>, não sal.</div>`,
+esp:`
+<h2 class="sec">Módulo 11: Óxidos</h2>
+<div class="box"><h3>O que é um óxido?</h3>Todo <b>composto binário</b> (só 2 elementos) que tem <b>oxigênio</b>, em que o oxigênio é o <b>mais eletronegativo</b> dos dois. Fórmula geral:<div class="fm" style="font-size:1.5rem">E<sub>x</sub>O<sub>y</sub></div>A água, <b>H₂O</b>, é um óxido.<br><small>Por que "mais eletronegativo"? O OF₂ não é óxido, porque o flúor é mais eletronegativo que o oxigênio.</small></div>
+<h2 class="sec">Os 3 tipos: pergunte "com quem o oxigênio está ligado?"</h2>
+<table><tr><th>Tipo</th><th>Formado por</th><th>Exemplos</th></tr>
+<tr><td><b>Molecular</b> (covalente)</td><td>ametal + O</td><td>CO, CO₂, SO₃, Cl₂O, P₂O₅</td></tr>
+<tr><td><b>Iônico</b> (metálico)</td><td>metal + O²⁻</td><td>Na₂O, CaO, Fe₂O₃</td></tr>
+<tr><td><b>Peróxido</b></td><td>grupo <b>O₂²⁻</b> com grupo 1, grupo 2 ou H</td><td>H₂O₂, Na₂O₂, CaO₂</td></tr></table>
+<div class="tip" style="margin-top:8px"><b>Roteiro rápido:</b> tem o grupo O₂ (dois oxigênios ligados, carga 2−)? É <b>peróxido</b>. Senão, o outro elemento é ametal? <b>Molecular</b>. É metal? <b>Iônico</b>.</div>
+<h2 class="sec">1. Óxidos moleculares: nomes com prefixos</h2>
+<div class="fm" style="font-size:1.15rem">prefixo + óxido de + prefixo + outro elemento<small>1º prefixo = nº de oxigênios · 2º prefixo = nº do outro elemento</small></div>
+<table><tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>mono</td><td>di</td><td>tri</td><td>tetra</td><td>penta</td></tr></table>
+<div class="warn"><b>Regra:</b> se o outro elemento tem só 1 átomo, <b>não</b> se escreve "mono" nele. CO₂ é "dióxido de carbono", e não "dióxido de monocarbono".</div>
+<table><tr><th>Fórmula</th><th>Leitura</th><th>Nome</th></tr>
+<tr><td>CO</td><td>1 O, 1 C</td><td>monóxido de carbono</td></tr>
+<tr><td>CO₂</td><td>2 O, 1 C</td><td>dióxido de carbono</td></tr>
+<tr><td>SO₃</td><td>3 O, 1 S</td><td>trióxido de enxofre</td></tr>
+<tr><td>Cl₂O</td><td>1 O, 2 Cl</td><td>monóxido de dicloro</td></tr>
+<tr><td>P₂O₅</td><td>5 O, 2 P</td><td>pentóxido de difósforo</td></tr></table>
+<h2 class="sec">2. Óxidos iônicos: nome simples</h2>
+<div class="fm" style="font-size:1.3rem">óxido de + nome do elemento</div>
+<p>O metal doa elétrons e o oxigênio recebe (O²⁻). Para achar a fórmula, as cargas devem se <b>anular</b>: o número da carga de um vira o índice do outro.</p>
+<table><tr><th>Íons</th><th>Fórmula</th><th>Nome</th></tr>
+<tr><td>Na⁺ + O²⁻</td><td>Na₂O</td><td>óxido de sódio</td></tr>
+<tr><td>Ca²⁺ + O²⁻</td><td>CaO</td><td>óxido de cálcio</td></tr>
+<tr><td>Fe³⁺ + O²⁻</td><td>Fe₂O₃</td><td>óxido de ferro III</td></tr></table>
+<div class="ex"><b>Ferro:</b> pode ter mais de uma carga (Fe²⁺ ou Fe³⁺). Por isso o algarismo romano mostra qual é. Fe³⁺ e O²⁻ cruzam: 2 ferros e 3 oxigênios, Fe₂O₃ (2 × 3+ = 6+ e 3 × 2− = 6−, tudo se anula).</div>
+<h2 class="sec">3. Peróxidos: o oxigênio em dupla</h2>
+<p>Aqui o oxigênio vem como um grupo <b>(O₂)²⁻</b>, dois oxigênios juntos com carga 2−. Aparece com elementos dos <b>grupos 1 e 2</b> e com o <b>H</b>.</p>
+<div class="fm" style="font-size:1.3rem">peróxido de + nome do elemento</div>
+<table><tr><th>Íons</th><th>Fórmula</th><th>Nome</th></tr>
+<tr><td>H⁺ + O₂²⁻</td><td>H₂O₂</td><td>peróxido de hidrogênio (molecular)</td></tr>
+<tr><td>Na⁺ + O₂²⁻</td><td>Na₂O₂</td><td>peróxido de sódio</td></tr>
+<tr><td>Ca²⁺ + O₂²⁻</td><td>CaO₂</td><td>peróxido de cálcio</td></tr></table>
+<div class="warn"><b>Não confunda:</b> Na₂O (óxido, 1 oxigênio) e Na₂O₂ (peróxido, grupo O₂). O índice do oxigênio muda o nome.</div>
+<h2 class="sec">Indicadores ácido-base</h2>
+<p>Indicador é uma substância que <b>muda de cor</b> conforme o pH do meio. É assim que se "vê" se algo é ácido ou básico.</p>
+<div class="box"><h3>Suco de repolho roxo</h3>Muda por toda a escala de pH:</div>
+<div class="svgw"><svg viewBox="0 0 420 110" role="img" aria-label="Cores do suco de repolho roxo por faixa de pH">
+<rect x="0" y="22" width="70" height="40" fill="#d6303f"/><rect x="70" y="22" width="70" height="40" fill="#ee7fa6"/><rect x="140" y="22" width="70" height="40" fill="#8a56b8"/><rect x="210" y="22" width="70" height="40" fill="#4a6fd0"/><rect x="280" y="22" width="70" height="40" fill="#4aa86a"/><rect x="350" y="22" width="70" height="40" fill="#e8c933"/>
+<text x="4" y="14" style="font-weight:700">mais ácido</text><text x="416" y="14" text-anchor="end" style="font-weight:700">mais básico</text>
+<text x="35" y="80" text-anchor="middle">1 a 3</text><text x="105" y="80" text-anchor="middle">4 a 6</text><text x="175" y="80" text-anchor="middle">7 a 9</text><text x="245" y="80" text-anchor="middle">9 a 11</text><text x="315" y="80" text-anchor="middle">11 a 13</text><text x="385" y="80" text-anchor="middle">13 a 14</text>
+<text x="35" y="98" text-anchor="middle">vermelho</text><text x="105" y="98" text-anchor="middle">rosa</text><text x="175" y="98" text-anchor="middle">roxo</text><text x="245" y="98" text-anchor="middle">azul</text><text x="315" y="98" text-anchor="middle">verde</text><text x="385" y="98" text-anchor="middle">amarelo</text>
+</svg></div>
+<p class="cap">Faixas conforme o roteiro da aula. Em outras fontes elas podem variar um pouco, então use as do seu caderno.</p>
+<div class="box"><h3>Fenolftaleína</h3>Só tem dois "estados":<table><tr><td><b>Ácido</b></td><td>incolor</td></tr><tr><td><b>Básico</b></td><td>rosa, violeta ou vermelho</td></tr></table></div>
+<div class="tip"><b>Dica:</b> o repolho dá uma cor para cada faixa de pH (mais informação). A fenolftaleína só responde "ácido ou básico?".</div>`
 };
 function resumo(){
   let h=DEFS+V[cur]+'<h2 class="sec">Resumo rápido para revisar</h2>'+S[cur].r.map(r=>`<div class="box"><h3>${r[0]}</h3><div>${r[1]}</div></div>`).join("");
