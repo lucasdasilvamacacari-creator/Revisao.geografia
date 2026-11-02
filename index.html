@@ -39,6 +39,18 @@ td,th{border:1px solid var(--bd);padding:6px 8px;text-align:left}
 .btn{background:var(--c);color:#fff;border-color:transparent}
 .big{font-size:2.4rem;font-weight:bold;margin:4px 0;color:var(--c)}
 [hidden]{display:none!important}
+.fm{background:var(--c);color:#fff;border-radius:10px;padding:14px 10px;text-align:center;font:700 1.9rem/1.3 Georgia,serif;margin:12px 0 6px;letter-spacing:.5px}
+.fm small{display:block;font:500 .88rem system-ui,sans-serif;opacity:.92;margin-top:4px;letter-spacing:0}
+@media(prefers-color-scheme:dark){.fm,.btn,nav button[aria-pressed=true]{color:#0f1a14}}
+.svgw{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:8px;margin:10px 0}
+.svgw svg{width:100%;height:auto;display:block}
+.svgw text{fill:var(--tx);font:13px system-ui,sans-serif}
+.cap{font:.88rem system-ui,sans-serif;color:var(--mut);margin:4px 2px 0}
+h2.sec{font-size:1.18rem;margin:26px 0 8px;border-bottom:3px solid var(--c);padding-bottom:4px}
+.ex{background:var(--okbg);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.95rem}
+.warn{background:var(--nobg);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.95rem}
+.ex b:first-child,.warn b:first-child{font-family:system-ui,sans-serif}
+ol.st{padding-left:22px;margin:6px 0}
 </style>
 </head>
 <body>
@@ -102,8 +114,146 @@ function nav(){
   for(const k in S){const b=document.createElement("button");b.textContent=S[k].n;b.style.setProperty("--c",S[k].c);
     b.setAttribute("aria-pressed",k===cur);b.onclick=()=>{cur=k;start();render()};$("subj").append(b)}
 }
+const DEFS=`<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="mb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3b82c4"/></marker><marker id="mo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e08a1e"/></marker><marker id="mg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f9e5b"/></marker></defs></svg>`;
+const V={
+bio:`
+<h2 class="sec">1. A ideia geral: a planta é um encanamento</h2>
+<div class="svgw"><svg viewBox="0 0 420 270" role="img" aria-label="Água sobe pelo xilema e açúcar desce pelo floema">
+<rect x="0" y="170" width="420" height="100" fill="#8d6e4f" opacity=".25"/>
+<rect x="200" y="50" width="14" height="150" rx="4" fill="#5aa469"/>
+<path d="M207 200 L160 245 M207 200 L207 258 M207 200 L255 245" stroke="#a07850" stroke-width="4" fill="none"/>
+<ellipse cx="270" cy="75" rx="45" ry="20" fill="#5aa469" transform="rotate(-20 270 75)"/>
+<ellipse cx="145" cy="95" rx="45" ry="20" fill="#5aa469" transform="rotate(20 145 95)"/>
+<line x1="190" y1="190" x2="190" y2="70" stroke="#3b82c4" stroke-width="4" marker-end="url(#mb)"/>
+<line x1="225" y1="70" x2="225" y2="190" stroke="#e08a1e" stroke-width="4" marker-end="url(#mo)"/>
+<path d="M300 55 q20 -15 40 -25" stroke="#3b82c4" stroke-width="3" stroke-dasharray="5 4" fill="none" marker-end="url(#mb)"/>
+<text x="285" y="20">vapor sai (estômatos)</text>
+<text x="55" y="140">Xilema ↑</text><text x="40" y="157">água + sais sobem</text>
+<text x="238" y="140">Floema ↓</text><text x="238" y="157">açúcar desce</text>
+<text x="262" y="235">Raiz absorve água</text>
+</svg></div>
+<p>Água entra pela <b>raiz</b>, sobe pelo <b>xilema</b> e sai pela folha como vapor. Na folha acontece a fotossíntese, e o açúcar produzido é distribuído pelo <b>floema</b>.</p>
+<table><tr><th></th><th>Leva</th><th>Direção</th><th>Células</th></tr>
+<tr><td><b>Xilema</b></td><td>seiva bruta (água + sais)</td><td>sobe</td><td>elementos de vaso e traqueídes</td></tr>
+<tr><td><b>Floema</b></td><td>seiva elaborada (açúcar)</td><td>distribui</td><td>tubos crivados e células companheiras</td></tr></table>
+<div class="tip" style="margin-top:8px"><b>Dica:</b> o <b>F</b>loema leva o que a <b>F</b>olha <b>F</b>abricou.</div>
+<h2 class="sec">2. Transpiração: pense na roupa no varal</h2>
+<p>Transpiração é a perda de água em forma de vapor, principalmente pelos <b>estômatos</b> e um pouco pela <b>cutícula</b>. A roupa seca mais rápido quando tem sol, calor, vento e ar seco. Com a planta é igual.</p>
+<table><tr><th>Aumenta</th><th>Diminui</th></tr>
+<tr><td>Muita luz</td><td>Pouca luz</td></tr><tr><td>Temperatura alta</td><td>Frio</td></tr>
+<tr><td>Ar seco</td><td>Ar úmido</td></tr><tr><td>Vento</td><td>Sem vento</td></tr>
+<tr><td>Solo com água disponível</td><td>Solo seco (a planta fecha os estômatos)</td></tr></table>
+<h2 class="sec">3. Estômatos: a portinha da folha</h2>
+<div class="svgw"><svg viewBox="0 0 420 150" role="img" aria-label="Estômato aberto e fechado">
+<ellipse cx="80" cy="60" rx="24" ry="42" fill="#5aa469"/><ellipse cx="150" cy="60" rx="24" ry="42" fill="#5aa469"/>
+<text x="115" y="58" text-anchor="middle">CO₂ ↓</text><text x="115" y="74" text-anchor="middle">H₂O ↑</text>
+<text x="115" y="124" text-anchor="middle" style="font-weight:700">ABERTO</text><text x="115" y="141" text-anchor="middle">células cheias (túrgidas)</text>
+<ellipse cx="305" cy="60" rx="24" ry="42" fill="#5aa469"/><ellipse cx="345" cy="60" rx="24" ry="42" fill="#5aa469"/>
+<text x="325" y="124" text-anchor="middle" style="font-weight:700">FECHADO</text><text x="325" y="141" text-anchor="middle">células murchas (flácidas)</text>
+</svg></div>
+<p class="cap">O espaço no meio é o <b>ostíolo</b>. As duas células ao redor são as <b>células-guarda</b>.</p>
+<div class="box"><h3>Como ele abre? (é uma sequência)</h3><ol class="st"><li>Íons entram nas células-guarda por <b>transporte ativo</b> (gasta energia).</li><li>Dentro da célula fica mais concentrado.</li><li>A água entra por <b>osmose</b> (vai para onde está mais concentrado).</li><li>A célula incha (<b>túrgida</b>), se curva e o ostíolo <b>abre</b>.</li></ol>Para fechar, o processo se inverte: íons saem, água sai, a célula fica <b>flácida</b>.</div>
+<div class="warn"><b>O dilema:</b> abrir o estômato deixa entrar CO₂ (necessário para a fotossíntese), mas também deixa a água escapar. Com calor e solo seco, a planta fecha e perde a fotossíntese para não murchar.</div>
+<h2 class="sec">4. Raiz: por onde a água entra</h2>
+<p>A água é absorvida na <b>zona pilífera</b>, pelos <b>pelos absorventes</b> (eles aumentam a superfície de contato). Depois ela tem dois caminhos até o centro da raiz:</p>
+<div class="svgw"><svg viewBox="0 0 420 190" role="img" aria-label="Vias apoplástica e simplástica na raiz">
+<rect x="30" y="35" width="80" height="110" fill="none" stroke="#888" stroke-width="2"/><rect x="110" y="35" width="80" height="110" fill="none" stroke="#888" stroke-width="2"/>
+<rect x="190" y="35" width="80" height="110" fill="#e08a1e" fill-opacity=".25" stroke="#888" stroke-width="2"/><rect x="270" y="35" width="80" height="110" fill="none" stroke="#888" stroke-width="2"/>
+<text x="70" y="92" text-anchor="middle" style="font-size:11px">córtex</text><text x="150" y="92" text-anchor="middle" style="font-size:11px">córtex</text>
+<text x="230" y="92" text-anchor="middle" style="font-size:11px">endoderme</text><text x="310" y="92" text-anchor="middle" style="font-size:11px">cilindro central</text>
+<line x1="5" y1="55" x2="184" y2="55" stroke="#3b82c4" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#mb)"/>
+<rect x="188" y="35" width="7" height="50" fill="#c0392b"/><text x="200" y="26" style="fill:#c0392b;font-weight:700">Estria de Caspary: bloqueia!</text>
+<line x1="5" y1="120" x2="345" y2="120" stroke="#2f9e5b" stroke-width="3" marker-end="url(#mg)"/>
+<text x="5" y="167" style="fill:#3b82c4">Apoplástica: entre as células, pelas paredes</text>
+<text x="5" y="184" style="fill:#2f9e5b">Simplástica: por dentro das células</text>
+</svg></div>
+<p><b>Plasmodesmos</b> são pontes minúsculas entre células vizinhas; é por elas que a via simplástica atravessa de uma célula para a outra. Na <b>endoderme</b>, as <b>estrias de Caspary</b> (faixas de suberina) fecham o caminho pelas paredes. Todo mundo é obrigado a entrar <b>pelo interior da célula</b>, atravessando a membrana, que escolhe o que passa. Por isso a absorção é <b>seletiva</b>.</p>
+<h2 class="sec">5. Como a água sobe uma árvore de 30 metros?</h2>
+<div class="box"><h3>Coesão-tensão (o mecanismo principal)</h3>Imagine tomar suco de canudo. A água evapora na folha e <b>puxa</b> a água de baixo (tensão). Ela não se rompe porque as moléculas <b>grudam umas nas outras</b> (coesão), como uma corrente. A evaporação na folha é o "sugador".</div>
+<div class="box"><h3>Pressão positiva da raiz</h3>A raiz <b>empurra</b> a água de baixo para cima. Ajuda, mas é fraca; sozinha não levaria a água até o topo.</div>
+<div class="box"><h3>Gutação</h3>Quando a raiz empurra e o ar está muito úmido (a água não evapora), ela sai em <b>gotas líquidas</b> na borda das folhas, geralmente de manhã. Não é orvalho: vem de dentro da planta.</div>
+<h2 class="sec">6. Faltou água: como as plantas se viram</h2>
+<table><tr><th>Tipo</th><th>O que acontece</th></tr>
+<tr><td><b>Caducifólias</b></td><td>Perdem as folhas na época seca. Sem folha, quase não há transpiração.</td></tr>
+<tr><td><b>Seca fisiológica</b></td><td>Tem água no solo, mas a planta não consegue pegá-la (solo muito salgado ou muito frio).</td></tr>
+<tr><td><b>Xerófitas</b> (cacto)</td><td>Folhas viram espinhos (menos área para perder água), caule clorofilado faz a fotossíntese, caule guarda água.</td></tr></table>`,
+fis:`
+<h2 class="sec">1. Energia elétrica: a conta de luz</h2>
+<div class="fm">E = P × Δt<small>Energia = Potência × Tempo</small></div>
+<p><b>Potência</b> é a rapidez com que o aparelho gasta energia. Analogia: se a torneira joga 10 litros por minuto, em 5 minutos saem 50 litros. Aqui, o aparelho "joga" watts, e a energia total é watts vezes o tempo ligado.</p>
+<div class="box"><h3>O que é kWh?</h3>1 kWh é a energia gasta por um aparelho de <b>1.000 W ligado durante 1 hora</b>. É a unidade que a companhia de luz cobra.</div>
+<div class="box"><h3>Receita para qualquer questão</h3><ol class="st"><li>Watts → kW: <b>÷ 1.000</b></li><li>Minutos → horas: <b>÷ 60</b></li><li>Energia de cada aparelho: <b>kW × h</b></li><li>Some os aparelhos (dia) e multiplique pelos dias (mês).</li><li>Custo = <b>kWh × tarifa</b></li></ol></div>
+<div class="ex"><b>Exemplo:</b> chuveiro de 4.800 W por 15 min. 4.800 W = 4,8 kW; 15 min = 0,25 h. E = 4,8 × 0,25 = <b>1,2 kWh</b>.</div>
+<h2 class="sec">2. Energia cinética: a energia do movimento</h2>
+<div class="fm">Ec = m · v² ÷ 2<small>m em kg, v em m/s, resultado em joules (J)</small></div>
+<p>Mais massa e mais velocidade significam mais energia. Mas a velocidade pesa <b>ao quadrado</b>: ela é a que mais manda.</p>
+<div class="svgw"><svg viewBox="0 0 420 150" role="img" aria-label="Dobrar a velocidade quadruplica a energia cinética">
+<rect x="60" y="90" width="20" height="20" fill="#2d5fa8"/><rect x="170" y="70" width="40" height="40" fill="#2d5fa8"/><rect x="290" y="50" width="60" height="60" fill="#2d5fa8"/>
+<text x="70" y="128" text-anchor="middle" style="font-weight:700">v</text><text x="70" y="145" text-anchor="middle">Ec = 1×</text>
+<text x="190" y="128" text-anchor="middle" style="font-weight:700">2v</text><text x="190" y="145" text-anchor="middle">Ec = 4×</text>
+<text x="320" y="128" text-anchor="middle" style="font-weight:700">3v</text><text x="320" y="145" text-anchor="middle">Ec = 9×</text>
+</svg></div>
+<p class="cap">A área do quadrado mostra a energia. Lado 2 vezes maior = área 4 vezes maior. Por isso batida a 100 km/h é muito pior que a 50 km/h.</p>
+<div class="box"><h3>Converter km/h em m/s</h3>Divida por <b>3,6</b>. Exemplos: 36 km/h = 10 m/s; 54 km/h = 15 m/s; 108 km/h = 30 m/s.</div>
+<div class="ex"><b>Exemplo:</b> moto de 200 kg a 54 km/h. v = 54 ÷ 3,6 = 15 m/s. Ec = 200 × 15² ÷ 2 = 200 × 225 ÷ 2 = <b>22.500 J</b>.</div>
+<h2 class="sec">3. Potência média</h2>
+<div class="fm">P = ΔE ÷ Δt<small>energia transformada ÷ tempo (resultado em watts)</small></div>
+<p>Dois carros chegam a 100 km/h, mas um leva 5 s e o outro 10 s. Os dois ganham a mesma energia, mas o primeiro tem potência maior porque fez isso mais rápido. E a variação da energia cinética é igual ao <b>trabalho</b> realizado: <b>W = ΔEc</b>.</p>
+<div class="ex"><b>Exemplo:</b> a moto vai de 22.500 J para 90.000 J em 5 s. ΔEc = 67.500 J. P = 67.500 ÷ 5 = <b>13.500 W</b>.</div>
+<h2 class="sec">4. Energia potencial: a energia da altura</h2>
+<div class="fm">Epg = m · g · h<small>g = 10 m/s², h = altura em metros</small></div>
+<p>Um tijolo no 10º andar tem mais energia guardada do que no chão: se cair, vai chegar com mais velocidade. Você <b>escolhe</b> onde a altura é zero (o nível de referência). Em geral, é o chão. Mudar a referência muda o valor da Epg, mas não a física do problema.</p>
+<h2 class="sec">5. Conservação: a montanha-russa</h2>
+<div class="fm">Ec + Epg = constante<small>sem atrito, a energia só troca de forma</small></div>
+<div class="svgw"><svg viewBox="0 0 420 335" role="img" aria-label="Montanha-russa e barras de energia">
+<path d="M20 40 C120 40 130 180 210 180 S330 80 400 80" stroke="#888" stroke-width="4" fill="none"/>
+<circle cx="20" cy="40" r="9" fill="#2d5fa8"/><circle cx="122" cy="110" r="9" fill="#2d5fa8"/><circle cx="210" cy="180" r="9" fill="#2d5fa8"/>
+<text x="35" y="30" style="font-weight:700">A</text><text x="135" y="100" style="font-weight:700">B</text><text x="218" y="205" style="font-weight:700">C</text>
+<rect x="40" y="220" width="40" height="80" fill="#e08a1e"/>
+<rect x="160" y="220" width="40" height="40" fill="#e08a1e"/><rect x="160" y="260" width="40" height="40" fill="#3b82c4"/>
+<rect x="280" y="220" width="40" height="80" fill="#3b82c4"/>
+<text x="60" y="214" text-anchor="middle">A: só Epg</text><text x="180" y="214" text-anchor="middle">B: metade/metade</text><text x="300" y="214" text-anchor="middle">C: só Ec</text>
+<rect x="20" y="316" width="12" height="12" fill="#e08a1e"/><text x="38" y="327">Epg (altura)</text><rect x="140" y="316" width="12" height="12" fill="#3b82c4"/><text x="158" y="327">Ec (movimento)</text>
+</svg></div>
+<p class="cap">A altura das duas barras juntas é sempre a mesma. Se uma cresce, a outra diminui.</p>
+<div class="ex"><b>Exemplo:</b> carrinho de 500 kg, a 20 m do solo. Energia total = 500 × 10 × 20 = 100.000 J. A 5 m: Epg = 500 × 10 × 5 = 25.000 J (25%). O resto, <b>75.000 J (75%)</b>, é Ec.<br>Atalho: se está a 5 de 20 metros, tem 5/20 = 25% de Epg.</div>`,
+qui:`
+<h2 class="sec">1. Primeiro, o vocabulário: café com açúcar</h2>
+<p><b>Soluto</b> é o que se dissolve (açúcar). <b>Solvente</b> é o que dissolve (água). <b>Solução</b> é a mistura toda. A concentração diz o quanto de soluto tem na solução.</p>
+<h2 class="sec">2. Concentração comum</h2>
+<div class="fm">C = m ÷ V<small>C em g/L · m = massa do soluto em g · V = volume da solução em L</small></div>
+<div class="svgw"><svg viewBox="0 0 200 150" style="max-width:240px;margin:auto" role="img" aria-label="Triângulo da fórmula C igual a m sobre V">
+<polygon points="100,8 192,142 8,142" fill="none" stroke="#a8512d" stroke-width="3"/>
+<line x1="52" y1="78" x2="148" y2="78" stroke="#a8512d" stroke-width="2"/><line x1="100" y1="78" x2="100" y2="142" stroke="#a8512d" stroke-width="2"/>
+<text x="100" y="62" text-anchor="middle" style="font-size:24px;font-weight:700">m</text><text x="68" y="120" text-anchor="middle" style="font-size:24px;font-weight:700">C</text><text x="132" y="120" text-anchor="middle" style="font-size:24px;font-weight:700">V</text>
+</svg></div>
+<p class="cap">Triângulo mágico: tape o que você quer descobrir. Tapou C → m ÷ V. Tapou m → C × V. Tapou V → m ÷ C.</p>
+<div class="warn"><b>Erro mais comum:</b> esquecer de converter mL para L. Divida por 1.000 antes de calcular. 250 mL = 0,25 L.</div>
+<div class="ex"><b>Exemplo:</b> 30 g de sacarose em 250 mL. C = 30 ÷ 0,25 = <b>120 g/L</b>. Isso significa 120 g de açúcar em cada litro.</div>
+<h2 class="sec">3. Concentração × densidade</h2>
+<table><tr><th></th><th>Concentração</th><th>Densidade</th></tr>
+<tr><td>Massa de...</td><td>só o <b>soluto</b></td><td>a <b>solução inteira</b></td></tr>
+<tr><td>Dividida por...</td><td>volume da solução</td><td>volume da solução</td></tr></table>
+<p>As unidades parecem (g/L ou g/mL), mas as grandezas são diferentes. É a pegadinha clássica.</p>
+<h2 class="sec">4. Mol/L: contar em "pacotes"</h2>
+<p>Em vez de contar em gramas, a química conta em <b>mols</b>, um "pacote" gigante de partículas, como uma dúzia, mas bem maior. A <b>massa molar (MM)</b> diz quanto pesa um pacote.</p>
+<div class="fm">M = n ÷ V<small>mol/L = mols ÷ litros</small></div>
+<div class="fm">n = m ÷ MM<small>mols = massa ÷ massa molar</small></div>
+<div class="fm">C = M × MM<small>atalho: g/L = mol/L × g/mol</small></div>
+<div class="box"><h3>Como achar a massa molar</h3>Some as massas atômicas de cada átomo da fórmula (tabela periódica). KOH = K (39) + O (16) + H (1) = <b>56 g/mol</b>.</div>
+<div class="ex"><b>Exemplo:</b> KOH a 28 g/L. M = C ÷ MM = 28 ÷ 56 = <b>0,5 mol/L</b>. Massa em 200 mL (0,2 L): m = C × V = 28 × 0,2 = <b>5,6 g</b>.</div>
+<h2 class="sec">5. Solubilidade</h2>
+<p>É o quanto de uma substância dissolve em uma quantidade de água. Se você põe açúcar demais no café, ele deixa de dissolver e fica no fundo: você passou do <b>coeficiente de solubilidade</b>. "Insolúvel" na prática significa que dissolve <b>muito pouquinho</b>, não zero.</p>
+<h2 class="sec">6. Funções inorgânicas: ache pela fórmula</h2>
+<table><tr><th>Função</th><th>Como reconhecer</th><th>No dia a dia</th></tr>
+<tr><td><b>Ácido</b></td><td>começa com <b>H</b> que se solta na água: HCl, H₂SO₄</td><td>bateria de carro, suco gástrico</td></tr>
+<tr><td><b>Base</b></td><td>termina em <b>OH</b>: NaOH, KOH, Al(OH)₃</td><td>antiácidos, soda cáustica</td></tr>
+<tr><td><b>Sal</b></td><td>vem da reação ácido + base: NaCl</td><td>sal de cozinha</td></tr>
+<tr><td><b>Óxido</b></td><td><b>2 elementos</b>, um deles é O: SO₂, CO₂, CaO</td><td>queima de combustível, cal na construção</td></tr></table>
+<div class="warn"><b>Pegadinha:</b> KOH tem OH, então é <b>base</b>, não sal.</div>`
+};
 function resumo(){
-  let h=S[cur].r.map(r=>`<div class="box"><h3>${r[0]}</h3><div>${r[1]}</div></div>`).join("");
+  let h=DEFS+V[cur]+'<h2 class="sec">Resumo rápido para revisar</h2>'+S[cur].r.map(r=>`<div class="box"><h3>${r[0]}</h3><div>${r[1]}</div></div>`).join("");
   h+=`<div class="tip">Leu tudo? Vá para a aba <b>Quiz</b> e teste o que lembrou.</div>`;
   $("resumo").innerHTML=h;
 }
